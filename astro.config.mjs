@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, envField } from 'astro/config';
 
 import sitemap from '@astrojs/sitemap';
 import remarkToc from 'remark-toc';
@@ -11,11 +11,17 @@ import {
   transformerNotationHighlight,
   transformerNotationWordHighlight,
 } from "@shikijs/transformers";
+import { transformerFileName } from "./src/utils/transformers/fileName.js";
+import { SITE } from "./src/config.ts";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://fredchyan.github.io',
-  integrations: [sitemap()],
+  site: SITE.website,
+  integrations: [
+    sitemap({
+      filter: page => SITE.showArchives || !page.endsWith("/archives"),
+    }),
+  ],
 
   markdown: {
     remarkPlugins: [
@@ -32,6 +38,7 @@ export default defineConfig({
       defaultColor: false,
       wrap: false,
       transformers: [
+        transformerFileName({ style: "v2", hideDot: false }),
         transformerNotationHighlight(),
         transformerNotationWordHighlight(),
         transformerNotationDiff({ matchAlgorithm: "v3" }),
@@ -44,5 +51,28 @@ export default defineConfig({
     optimizeDeps: {
       exclude: ["@resvg/resvg-js"],
     },
+  },
+  
+  // Enhanced image optimization with responsive styles and constrained layout
+  image: {
+    responsiveStyles: true,
+    layout: "constrained",
+  },
+  
+  // Environment variable validation schema
+  // PUBLIC_GOOGLE_SITE_VERIFICATION is optional - for Google Search Console integration
+  env: {
+    schema: {
+      PUBLIC_GOOGLE_SITE_VERIFICATION: envField.string({
+        access: "public",
+        context: "client",
+        optional: true,
+      }),
+    },
+  },
+  
+  // Experimental features for better script loading order
+  experimental: {
+    preserveScriptOrder: true,
   },
 });

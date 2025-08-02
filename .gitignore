@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# pagefind - generated search index (copied from dist/ to public/ during build)
+public/pagefind

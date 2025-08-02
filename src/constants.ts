@@ -1,4 +1,5 @@
 import type { Props } from "astro";
+import type { GiscusProps } from "@giscus/react";
 import IconMail from "@/assets/icons/IconMail.svg";
 import IconGitHub from "@/assets/icons/IconGitHub.svg";
 import IconBrandX from "@/assets/icons/IconBrandX.svg";
@@ -82,3 +83,18 @@ export const SHARE_LINKS: Social[] = [
     icon: IconMail,
   },
 ] as const;
+
+// Giscus comments configuration
+// Get these values from https://giscus.app/ after setting up your repository
+export const GISCUS: GiscusProps = {
+  repo: "fredchyan/fredchyan.github.io",
+  repoId: "R_kgDOPIDjnA",
+  category: "Announcements", // e.g., "General" 
+  categoryId: "DIC_kwDOPIDjnM4CttR0",
+  mapping: "pathname",
+  reactionsEnabled: "0",
+  emitMetadata: "0",
+  inputPosition: "bottom",
+  lang: "en",
+  loading: "lazy",
+};

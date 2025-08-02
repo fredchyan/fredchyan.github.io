@@ -1,12 +1,15 @@
 ---
-title: 'My First Blog Post'
-pubDate: 2022-07-01
-description: 'This is the first post of my new Astro blog.'
-author: 'Astro Learner'
-image:
-    url: 'https://docs.astro.build/assets/rose.webp'
-    alt: 'The Astro logo on a dark background with a pink glow.'
-tags: ["astro", "blogging", "learning in public"]
+author: Fred Chyan
+pubDatetime: 2022-07-01T00:00:00Z
+title: My First Blog Post
+slug: my-first-blog-post
+featured: false
+draft: false
+tags:
+  - astro
+  - blogging
+  - learning in public
+description: This is the first post of my new Astro blog.
 ---
 
 Welcome to my _new blog_ about learning Astro! Here, I will share my learning journey as I build a new website.

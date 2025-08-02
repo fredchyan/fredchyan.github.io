@@ -1,90 +1,72 @@
-html {
-    background-color: #f1f5f9;
-    font-family: sans-serif;
+@import "tailwindcss";
+@import "./typography.css";
+
+/* Custom Tailwind variant that maps dark: classes to data-theme="dark" */
+/* This allows using dark:bg-red-500 which becomes [data-theme=dark] .bg-red-500 */
+/* The :where() function groups selectors with zero specificity */
+/* & represents the element, [data-theme=dark] targets the attribute, * targets descendants */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+:root,
+html[data-theme="light"] {
+  --background: #fdfdfd;
+  --foreground: #282728;
+  --accent: #006cac;
+  --muted: #e6e6e6;
+  --border: #ece9e9;
 }
 
-body {
-    margin: 0 auto;
-    width: 100%;
-    max-width: 80ch;
-    padding: 1rem;
-    line-height: 1.5;
+html[data-theme="dark"] {
+  --background: #212737;
+  --foreground: #eaedf3;
+  --accent: #ff6b01;
+  --muted: #343f60;
+  --border: #ab4b08;
 }
 
-* {
-    box-sizing: border-box;
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
 }
 
-h1 {
-    margin: 1rem 0;
-    font-size: 2.5rem;
-}
-
-/* nav styles */
-
-.hamburger {
-    padding-right: 20px;
+@layer base {
+  * {
+    @apply border-border outline-accent/75;
+    scrollbar-width: auto;
+    scrollbar-color: var(--color-muted) transparent;
+  }
+  html {
+    @apply overflow-y-scroll scroll-smooth;
+  }
+  body {
+    @apply flex min-h-svh flex-col bg-background font-mono text-foreground selection:bg-accent/75 selection:text-background;
+  }
+  a,
+  button {
+    @apply outline-offset-1 outline-accent focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-dashed;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
     cursor: pointer;
+  }
+  section,
+  footer {
+    @apply mx-auto max-w-app px-4;
+  }
 }
 
-.hamburger .line {
-    display: block;
-    width: 40px;
-    height: 5px;
-    margin-bottom: 10px;
-    background-color: #ff9776;
+@utility max-w-app {
+  @apply max-w-3xl;
 }
 
-
-.nav-links {
-    width: 100%;
-    top: 5rem;
-    left: 48px;
-    background-color: #ff9776;
-    display: none;
-    margin: 0;
+.active-nav {
+  @apply underline decoration-wavy decoration-2 underline-offset-4;
 }
 
-.nav-links a {
-    display: block;
-    text-align: center;
-    padding: 10px 0;
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.nav-links a:hover,
-.nav-links a:focus {
-    background-color: #ff9776;
-}
-
-.expanded {
-    display: unset;
-}
-
-@media screen and (min-width: 636px) {
-    .nav-links {
-        margin-left: 5em;
-        display: block;
-        position: static;
-        width: auto;
-        background: none;
-    }
-
-    .nav-links a {
-        display: inline-block;
-        padding: 15px 20px;
-    }
-
-}
-
-html.dark {
-    background-color: #0d0950;
-    color: #fff;
-}
-
-.dark .nav-links a {
-    color: #fff;
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 1rem;
 }

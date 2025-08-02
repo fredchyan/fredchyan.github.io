@@ -116,4 +116,30 @@
       @apply rounded-sm border border-border px-0.5 py-px;
     }
   }
+
+  /* ===== LaTeX Pipeline: Theme Integration ===== */
+  /* The final step in the LaTeX rendering pipeline:
+     
+     Complete Pipeline:
+     • Markdown: "$E = mc^2$" (raw LaTeX in markdown files)
+     • remark-math: Parses delimiters → math AST nodes
+     • rehype-katex: Renders AST → <span class="katex">...</span> HTML
+     • katex.min.css: Base styles → fonts, layout, symbols
+     • typography.css: Theme colors → proper light/dark mode
+     
+     This final step ensures math inherits theme colors instead of 
+     defaulting to black text (invisible on dark backgrounds).
+  */
+  
+  /* Apply theme colors to all KaTeX math elements */
+  /* Applied to both inline ($E = mc^2$) and block ($$...$$) math */
+  .prose .katex,
+  .prose .katex-display {
+    @apply text-foreground;
+  }
+  
+  /* Block equations: Add vertical spacing for readability */
+  .prose .katex-display {
+    @apply my-4;
+  }
 }

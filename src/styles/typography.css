@@ -138,6 +138,14 @@
     @apply text-foreground;
   }
   
+  /* Override prose body color for KaTeX elements */
+  /* The .app-prose class applies var(--tw-prose-body) which is grey */
+  /* Force KaTeX to use theme foreground color instead */
+  .app-prose .katex,
+  .app-prose .katex * {
+    color: var(--foreground) !important;
+  }
+  
   /* Block equations: Add vertical spacing for readability */
   .prose .katex-display {
     @apply my-4;

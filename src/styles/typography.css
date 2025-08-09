@@ -133,44 +133,24 @@
   
   /* Apply theme colors to all KaTeX math elements */
   /* Applied to both inline ($E = mc^2$) and block ($$...$$) math */
-  .prose .katex,
-  .prose .katex-display {
+  .app-prose .katex,
+  .app-prose .katex-display {
     @apply text-foreground;
   }
   
-  /* Override prose body color for KaTeX elements */
-  /* The .app-prose class applies var(--tw-prose-body) which is grey */
-  /* Force KaTeX to use theme foreground color instead */
-  .app-prose .katex,
-  .app-prose .katex * {
-    color: var(--foreground) !important;
-  }
-  
   /* Block equations: Add vertical spacing for readability */
-  .prose .katex-display {
+  .app-prose .katex-display {
     @apply my-4;
   }
 
-  /* 
-    Mobile responsiveness fix for KaTeX block equations.
-    https://katex.org/docs/issues
-    
-    Why is this rule NOT prefixed with `.prose`?
-    
-    This is a CSS specificity issue. The `@tailwindcss/typography` plugin
-    applies its own styles to child elements of `.prose`, including <p> tags.
-    KaTeX often wraps block equations in a <p> tag.
-    
-    A rule like `.prose p { overflow: visible; }` from the plugin can override
-    a more specific rule like `.prose .katex-display { overflow-x: auto; }`
-    because the overflow property on the parent <p> takes precedence.
-    
-    By targeting `.katex-display` directly (without the `.prose` prefix),
-    we apply the overflow style directly to the KaTeX element, avoiding
-    a specificity conflict with the typography plugin's rules on the parent <p> tag.
-  */
-  .katex-display {
+  /* Make individual display equations scrollable horizontally */
+  .app-prose .katex-display {
     overflow-x: auto;
     overflow-y: hidden;
+  }
+  
+  /* Block equations: Add vertical spacing for readability */
+  .app-prose .katex-display {
+    @apply my-4;
   }
 }

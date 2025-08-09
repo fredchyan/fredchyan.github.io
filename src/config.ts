@@ -12,9 +12,9 @@ export const SITE = {
   showArchives: true,
   showBackButton: true, // show back button in post detail
   editPost: {
-    enabled: false, // disable edit links for now
+    enabled: true,
     text: "Edit page",
-    url: "https://github.com/fredchyan/fredchyan/edit/main/",
+    url: "https://github.com/fredchyan/fredchyan.github.io/edit/master/",
   },
   dynamicOgImage: true,
   dir: "ltr", // "rtl" | "auto"

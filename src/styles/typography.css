@@ -149,8 +149,4 @@
     overflow-y: hidden;
   }
   
-  /* Block equations: Add vertical spacing for readability */
-  .app-prose .katex-display {
-    @apply my-4;
-  }
 }

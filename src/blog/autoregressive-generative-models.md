@@ -175,12 +175,12 @@ $
 
 This formula measures the "divergence" of our model's predictions from the true distribution. Let's expand it:
 
-$ 
+$$ 
 \begin{aligned}
 D_{KL}(P_{\text{data}} || P_\theta) &= \mathbb{E}_{x \sim P_{\text{data}}} [\log P_{\text{data}}(x) - \log P_\theta(x)] \\
 &= \underbrace{\mathbb{E}_{x \sim P_{\text{data}}} [\log P_{\text{data}}(x)]}_{\text{Entropy of the data}} - \underbrace{\mathbb{E}_{x \sim P_{\text{data}}} [\log P_\theta(x)]}_{\text{Expected log-likelihood of the model}} \\
 \end{aligned} 
-$
+$$
 
 The first term, the entropy of the data, is a fixed value. We can't change it. Therefore, to minimize the KL divergence, we must **maximize** the second term: $\mathbb{E}_{x \sim P_{\text{data}}} [\log P_\theta(x)]$.
 

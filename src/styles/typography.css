@@ -150,4 +150,7 @@
   .prose .katex-display {
     @apply my-4;
   }
+
+  /* Make individual display equations scrollable horizontally */
+  .prose .katex-display { overflow: auto hidden }
 }

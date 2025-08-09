@@ -20,29 +20,28 @@ interface Social {
 export const SOCIALS: Social[] = [
   {
     name: "GitHub",
-    href: "https://github.com/fchyan",
+    href: "https://github.com/fredchyan",
     linkTitle: `${SITE.title} on GitHub`,
     icon: IconGitHub,
   },
   {
     name: "Mail",
-    href: "mailto:your.email@example.com",
+    href: "mailto:fchyan@gmail.com",
     linkTitle: `Send an email to ${SITE.title}`,
     icon: IconMail,
   },
-  // Uncomment and update as needed:
-  // {
-  //   name: "X",
-  //   href: "https://x.com/yourusername",
-  //   linkTitle: `${SITE.title} on X`,
-  //   icon: IconBrandX,
-  // },
-  // {
-  //   name: "LinkedIn",
-  //   href: "https://www.linkedin.com/in/yourusername/",
-  //   linkTitle: `${SITE.title} on LinkedIn`,
-  //   icon: IconLinkedin,
-  // },
+  {
+    name: "X",
+    href: "https://x.com/fredchyan",
+    linkTitle: `${SITE.title} on X`,
+    icon: IconBrandX,
+  },
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/fredchyan",
+    linkTitle: `${SITE.title} on LinkedIn`,
+    icon: IconLinkedin,
+  },
 ] as const;
 
 export const SHARE_LINKS: Social[] = [

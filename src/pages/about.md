@@ -3,20 +3,13 @@ layout: ../layouts/AboutLayout.astro
 title: "About"
 ---
 
-Welcome to my personal blog! This is where I share my thoughts on technology, programming, and other topics that interest me.
+Hi, I'm Fred. Welcome to my personal blog!
 
 ## About Me
-
-I'm a software developer passionate about building great web experiences. I enjoy working with modern technologies and sharing what I learn along the way.
-
+I'm a software developer with a keen interest in machine learning and the theoretical foundations that underpin modern technology.
 ## What You'll Find Here
+This is my corner of the internet where I document my journey, share what I'm learning, and explore topics that I'm passionate about. My goal is to learn and share in public, creating a space for both myself and others to grow. I hope you find the content here valuable and insightful.
 
-On this blog, you can expect to find:
-
-- Technical tutorials and guides
-- Thoughts on web development best practices  
-- Reviews of tools and technologies
-- Personal projects and experiments
 
 ## Get In Touch
 

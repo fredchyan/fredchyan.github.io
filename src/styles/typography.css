@@ -151,6 +151,26 @@
     @apply my-4;
   }
 
-  /* Make individual display equations scrollable horizontally */
-  .prose .katex-display { overflow: auto hidden }
+  /* 
+    Mobile responsiveness fix for KaTeX block equations.
+    https://katex.org/docs/issues
+    
+    Why is this rule NOT prefixed with `.prose`?
+    
+    This is a CSS specificity issue. The `@tailwindcss/typography` plugin
+    applies its own styles to child elements of `.prose`, including <p> tags.
+    KaTeX often wraps block equations in a <p> tag.
+    
+    A rule like `.prose p { overflow: visible; }` from the plugin can override
+    a more specific rule like `.prose .katex-display { overflow-x: auto; }`
+    because the overflow property on the parent <p> takes precedence.
+    
+    By targeting `.katex-display` directly (without the `.prose` prefix),
+    we apply the overflow style directly to the KaTeX element, avoiding
+    a specificity conflict with the typography plugin's rules on the parent <p> tag.
+  */
+  .katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
 }

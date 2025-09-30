@@ -32,15 +32,14 @@ import {
 import { transformerFileName } from "./src/utils/transformers/fileName.js";
 import { SITE } from "./src/config.ts";
 
+import mdx from "@astrojs/mdx";
+
 // https://astro.build/config
 export default defineConfig({
   site: SITE.website,
-  integrations: [
-    react(),
-    sitemap({
-      filter: page => SITE.showArchives || !page.endsWith("/archives"),
-    }),
-  ],
+  integrations: [react(), sitemap({
+    filter: page => SITE.showArchives || !page.endsWith("/archives"),
+  }), mdx()],
 
   markdown: {
     remarkPlugins: [

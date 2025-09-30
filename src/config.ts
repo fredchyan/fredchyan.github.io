@@ -16,6 +16,7 @@ export const SITE = {
     text: "Edit page",
     url: "https://github.com/fredchyan/fredchyan.github.io/edit/master/",
   },
+  repositoryBaseUrl: "https://github.com/fredchyan/fredchyan.github.io/blob/master/",
   dynamicOgImage: true,
   dir: "ltr", // "rtl" | "auto"
   lang: "en", // html lang code. Set this empty and default will be "en"
